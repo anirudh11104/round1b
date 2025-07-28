@@ -1,0 +1,8 @@
+FROM --platform=linux/amd64 python:3.9-slim
+WORKDIR /app
+COPY requirements.1b.txt .
+RUN pip install --no-cache-dir -r requirements.1b.txt
+COPY ./model /app/model
+COPY solution_1b.py .
+RUN mkdir -p /app/input /app/output
+ENTRYPOINT ["python", "solution_1b.py"]
